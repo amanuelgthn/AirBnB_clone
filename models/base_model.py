@@ -18,4 +18,14 @@ class BaseModel():
     def save(self):
         self.updated_at = datetime.now()
     def to_dict(self):
+    def __str__(self):
+          """
+        __str__ method
+        """
+        [<class name>] (<self.id>) <self.__dict__>
+        result = ""
+        result = "[" + str(type(self).__name__) + "] " + "("
+        result += str(self.id) + ") "
+        result += str(self.width) + "/" + str(self.height)
+        return result
         
