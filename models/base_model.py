@@ -18,6 +18,7 @@ class BaseModel():
     def save(self):
         self.updated_at = datetime.now().strftime(%Y-%m-%dT%H:%M:%S.%f)
     def to_dict(self):
+        return BaseModel.__dict__
     def __str__(self):
           """
         __str__ method
