@@ -5,7 +5,7 @@ Module that defines all the common attributes/methods for other classes
 import uuid
 import datetime
 
-class BaseModel():
+class BaseModel:
     """
     BaseModel Class
     """
