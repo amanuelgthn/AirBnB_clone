@@ -15,12 +15,15 @@ class BaseModel:
         self.id = str(uuid.uuid4())
         self.created_at = datetime.now().isoformat()
         self.updated_at = datetime.now().isoformat()
+        
     def save(self):
         self.updated_at = datetime.now().isoformat()
+        
     def to_dict(self):
         return BaseModel.__dict__
+    
     def __str__(self):
-          """
+        """
         __str__ method
         """
         result = ""
