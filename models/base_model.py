@@ -4,6 +4,7 @@ Module that defines all the common attributes/methods for other classes
 """
 import uuid
 import datetime
+import models
 
 
 class BaseModel:
@@ -12,40 +13,31 @@ class BaseModel:
     """
 
     def __init__(self, *args, **kwargs):
-        id_found = False
-        created_found = False
-        updated_found = False
+        time_format = "%Y-%m-%dT%H:%M:%S.%f"
         if kwargs:
             for key, value in kwargs.items():
                 if key == "id":
                     self.id = value
-                    id_found = True
                 elif key == "created_at":
-                    self.created_at = value
-                    created_found = True
+                    self.created_at = datetime.datetime.strptime(value, time_format)
                 elif key == "updated_at":
-                    self.updated_at = value
-                    updated_found = True
+                    self.updated_at = datetime.datetime.strptime(value, time_format)
                 else:
                     self.key = value
         else:
-            if id_found is False:
-                self.id = str(uuid.uuid4())
-            if created_found is False:
-                self.created_at = datetime.datetime.now()
-            if updated_found is False:
-                self.updated_at = datetime.datetime.now()
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.datetime.now()
+            self.updated_at = datetime.datetime.now()
+            models.storage.new(self)
 
     def save(self):
-        from models import storage
-        storage.new(self)
-        storage.save()
         self.updated_at = datetime.datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         public_attr = self.__dict__.copy()
-        public_attr["created_at"] = public_attr["created_at"].isoformat()
-        public_attr["updated_at"] = public_attr["updated_at"].isoformat()
+        public_attr["created_at"] = self.created_at.isoformat()
+        public_attr["updated_at"] = self.updated_at.isoformat()
         public_attr["__class__"] = __class__.__name__
         return public_attr
 
@@ -55,3 +47,5 @@ class BaseModel:
         """
         return "[{:s}] ({:s}) {}".format(self.__class__.__name__,
                                          self.id, self.__dict__)
+    def __repr__(self):
+        return (self.__str__)

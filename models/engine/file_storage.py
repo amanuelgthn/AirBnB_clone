@@ -5,7 +5,8 @@ and deserializes JSON file to instances
 """
 from models.base_model import BaseModel
 import json
-dict_ref = {"BaseModel": BaseModel}
+import os
+
 
 class FileStorage():
     """
@@ -14,6 +15,7 @@ class FileStorage():
 
     __file_path = "file.json"
     __objects = {}
+    dict_ref = {"BaseModel": BaseModel}
 
     def all(self):
         return self.__objects
@@ -28,20 +30,11 @@ class FileStorage():
             file_dict[key] = self.__objects[key].to_dict()
         with open(self.__file_path,"w+", encoding="utf-8") as file:
             json.dump(file_dict,file)
-    #def reload(self):
-       # try:
-           # with open(self.__file_path,'r',encoding="utf-8") as file:
-            ##    objects = json.load(file)
-               # for key in objects:
-               #     self.__objects[key] = dict_ref[objects[key]["__class__"]](**objects[key])
-       # except FileNotFoundError:
-           # pass
     def reload(self):
-        """deserializes the JSON file to __objects"""
-        try:
-            with open(self.__file_path, 'r') as f:
-                jo = json.load(f)
-            for key in jo:
-                self.__objects[key] = classes[jo[key]["__class__"]](**jo[key])
-        except:
-            pass
+        """Deserialize/convert obj dicts back to instances, if it exists"""
+        if os.path.exists(self.__file_path):
+            with open(self.__file_path, 'r', encoding="UTF-8") as file:
+               objects= json.load(file)
+            for key, value in objects.items():
+                obj = self.dict_ref[value['__class__']](**value)
+                self.__objects[key] = obj
