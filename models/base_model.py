@@ -28,14 +28,18 @@ class BaseModel:
                     updated_found = True
                 else:
                     self.key = value
-        if id_found is False:
-            self.id = str(uuid.uuid4())
-        if created_found is False:
-            self.created_at = datetime.datetime.now()
-        if updated_found is False:
-            self.updated_at = datetime.datetime.now()
+        else:
+            if id_found is False:
+                self.id = str(uuid.uuid4())
+            if created_found is False:
+                self.created_at = datetime.datetime.now()
+            if updated_found is False:
+                self.updated_at = datetime.datetime.now()
 
     def save(self):
+        from models import storage
+        storage.new(self)
+        storage.save()
         self.updated_at = datetime.datetime.now()
 
     def to_dict(self):
