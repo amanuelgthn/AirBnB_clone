@@ -43,16 +43,19 @@ class BaseModel:
         self.updated_at = datetime.datetime.now()
         
   
-    def to_dict(obj):
-        public_attr = {}
-        for attr in obj.__dict__:
-            if not attr.startswith("__") and type(attr) != "<class 'method'>":
-                if attr == "created_at" or attr == "updated_at":
-                    public_attr[attr] = getattr(obj,attr).isoformat()
-                else:
-                    public_attr[attr] = getattr(obj,attr)
-                    
-        public_attr["__class__"] = str(type(obj).__name__)
+    def to_dict(self):
+        public_attr = self.__dict__.copy()
+        #for attr in obj.__dict__:
+            #if not attr.startswith("__") and type(attr) != "<class 'method'>":
+                #if attr == "created_at" or attr == "updated_at":
+                    #public_attr[attr] = getattr(obj,attr).isoformat()
+               # else:
+                    #public_attr[attr] = getattr(obj,attr)
+        if "created_at" in public_attr.keys():
+            public_attr["created_at"] = public_attr["created_at"].isoformat()
+        if "updated_at" in public_attr.keys():
+            public_attr["updated_at"] = public_attr["updated_at"].isoformat()
+        public_attr["__class__"] = str(type(self).__name__)
         return public_attr
     def __str__(self):
         """
@@ -62,6 +65,5 @@ class BaseModel:
         result = "[" + str(type(self).__name__) + "] " + "("
         result += str(self.get_id) + ") "
         dict_attr = self.__dict__
-        #dict_attr.pop("__class__")
         result += str(dict_attr)
         return result
