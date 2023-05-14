@@ -3,29 +3,36 @@
 Module that contains FileStorage that serializes instances to a JSON file
 and deserializes JSON file to instances
 """
+from models.base_model import BaseModel
 import json
 import uuid
+import os
 import datetime
 
-class FileStorage:
+class FileStorage():
     """
     FileStorage Class
     """
 
-    def __init__(self, file_path):
-        self.__file_path = file_path
-        self.__objects = {}
+    __file_path = "file.json"
+    __objects = {}
 
-    @property
-    def file_path(self):
-        return self.__file_path
-    
     def all(self):
-        return self.__objects
+        return FileStorage.__objects
     def new(self, obj):
         if obj.__class__.__name__ not in self.__objects:
-            self.__objects[obj.__class__.__name__] = []
-        self.__objects[obj.__class__.__name__]= obj
+            FileStorage.__objects[obj.__class__.__name__] = []
+        FileStorage.__objects[obj.__class__.__name__]= obj
+
     def save(self):
-        with open(self.__file_path,'w',
-    
+        file_dict = {}
+        for key in self.__objects.keys():
+            file_dict[key] = self.__objects[key].to_dict()
+        with open(FileStorage.__file_path,'w', encoding="utf-8") as file:
+            json.dump(file_dict,file)
+    def reload(self):
+        if os.path.exists(self.__file_path):
+            with open(self.__file_path,'r',encoding="utf-8") as file:
+                objects = json.loads(file.read())
+                for key in objects:
+                    FileStorage.__objects[key] =objects[key]
