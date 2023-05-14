@@ -38,3 +38,5 @@ class FileStorage():
             for key, value in objects.items():
                 obj = self.dict_ref[value['__class__']](**value)
                 self.__objects[key] = obj
+    def remove(self, key):
+        self.__objects.pop(key)
