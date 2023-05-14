@@ -31,23 +31,27 @@ class BaseModel:
         if id_found == False:
             self.id = str(uuid.uuid4())
         if created_found == False:
-            self.created_at = datetime.datetime.now().isoformat()
+            self.created_at = datetime.datetime.now()
         if updated_found == False:
-            self.updated_at = datetime.datetime.now().isoformat()
+            self.updated_at = datetime.datetime.now()
 
     @property
     def get_id(self):
         return self.id
     
     def save(self):
-        self.updated_at = datetime.datetime.now().isoformat()
+        self.updated_at = datetime.datetime.now()
         
   
     def to_dict(obj):
         public_attr = {}
         for attr in obj.__dict__:
             if not attr.startswith("__") and type(attr) != "<class 'method'>":
-                public_attr[attr] = getattr(obj,attr)
+                if attr == "created_at" or attr == "updated_at":
+                    public_attr[attr] = getattr(obj,attr).isoformat()
+                else:
+                    public_attr[attr] = getattr(obj,attr)
+                    
         public_attr["__class__"] = str(type(obj).__name__)
         return public_attr
     def __str__(self):
@@ -57,7 +61,7 @@ class BaseModel:
         result = ""
         result = "[" + str(type(self).__name__) + "] " + "("
         result += str(self.get_id) + ") "
-        dict_attr = self.to_dict()
-        dict_attr.pop("__class__")
+        dict_attr = self.__dict__
+        #dict_attr.pop("__class__")
         result += str(dict_attr)
         return result
