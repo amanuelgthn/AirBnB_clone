@@ -2,11 +2,12 @@
 """
 Module that dontains the entry point of the command interpreter
 """
+
+
 import cmd
 import models
 from models.base_model import BaseModel
-from models.engine.file_storage import FileStorage
-import sys
+
 
 
 class HBNBCommand(cmd.Cmd):
