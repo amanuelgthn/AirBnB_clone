@@ -28,9 +28,6 @@ class BaseModel:
                     updated_found = True
                 else:
                     self.key = value
-        else:
-            from models import storage
-            storage.new(self)
         if id_found == False:
             self.id = str(uuid.uuid4())
         if created_found == False:
@@ -43,7 +40,6 @@ class BaseModel:
         return self.id
     
     def save(self):
-        storage.save()
         self.updated_at = datetime.datetime.now()
         
   
