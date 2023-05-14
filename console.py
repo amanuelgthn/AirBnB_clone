@@ -10,7 +10,14 @@ import sys
 
 
 class HBNBCommand(cmd.Cmd):
+    """
+    HBNBCommand class
+    """
+
     def __init__(self):
+        """
+        initialiazation
+        """
         super().__init__()
         self.prompt = "(hbnb)"
         self.classes = ["BaseModel"]
@@ -101,6 +108,9 @@ class HBNBCommand(cmd.Cmd):
                     list_obj.append(value.__str__())
 
     def update(self, *args):
+        """
+        update
+        """
         arguments = str(args[0]).split()
         if len(args) == 0:
             print("** class name missing **")
@@ -125,6 +135,9 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
 
     def destroy(self, *args):
+        """
+        destroy
+        """
         arguments = str(args[0]).split()
         if len(args) == 0:
             print("** class name missing **")
