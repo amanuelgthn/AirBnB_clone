@@ -30,8 +30,8 @@ class FileStorage():
     def reload(self):
         try:
             with open(self.__file_path,'r',encoding="utf-8") as file:
-                objects = json.loads(file.read())
-                for key in objects:
-                    self.__objects[key] =objects[key].to_dict()
+                objects = json.load(file)
+                #for key in objects:
+                    #self.__objects[key] =objects[key]
         except FileNotFoundError:
             pass
