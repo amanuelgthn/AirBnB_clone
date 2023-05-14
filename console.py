@@ -24,11 +24,11 @@ class HBNBCommand(cmd.Cmd):
         self.do_quit = self.do_quit
         self.EOF = self.do_quit
         self.help = self.help
-        self.do_create = self.create
-        self.do_show = self.show
-        self.do_all = self.all
-        self.do_destroy = self.destroy
-        self.do_update = self.update
+        self.do_create = self.do_create
+        self.do_show = self.do_show
+        self.do_all = self.do_all
+        self.do_destroy = self.do_destroy
+        self.do_update = self.do_update
 
     def do_quit(self, *args):
         """Quit command to exit the program"""
@@ -49,7 +49,7 @@ class HBNBCommand(cmd.Cmd):
         """Do nothing on an empty line."""
         return
 
-    def create(self, args):
+    def do_create(self, args):
         """
         Creates a new instance of BaseModel, saves it (to the JSON)
         and prints the id
@@ -65,7 +65,7 @@ class HBNBCommand(cmd.Cmd):
             except NameError:
                 print("** class doesn't exist **")
 
-    def show(self, *args):
+    def do_show(self, *args):
         """
         print the string representation of an instance
         based on the class name and id
@@ -86,7 +86,7 @@ class HBNBCommand(cmd.Cmd):
         except KeyError:
             print("** no instance found **")
 
-    def all(self, *args):
+    def do_all(self, *args):
         """
         print all string representation of all instances based or
         not on the class name
@@ -97,7 +97,7 @@ class HBNBCommand(cmd.Cmd):
         if len(args) == 0:
             for key, value in objects.items():
                 list_obj.append(value.__str__())
-        else:
+        elif arguments:
             if arguments[0] not in self.classes:
                 print("** class doesn't exist **")
                 return
@@ -105,7 +105,7 @@ class HBNBCommand(cmd.Cmd):
                 if type(value) is arguments[0]:
                     list_obj.append(value.__str__())
 
-    def update(self, *args):
+    def do_update(self, *args):
         """
         update
         """
@@ -132,7 +132,7 @@ class HBNBCommand(cmd.Cmd):
         except KeyError:
             print("** no instance found **")
 
-    def destroy(self, *args):
+    def do_destroy(self, *args):
         """
         destroy
         """
