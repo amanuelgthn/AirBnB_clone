@@ -89,7 +89,7 @@ class HBNBCommand(cmd.Cmd):
     def all(self, *args):
         """
         print all string representation of all instances based or
-        not not on the class name
+        not on the class name
         """
         objects = models.storage.all()
         arguments = str(args[0]).split()
