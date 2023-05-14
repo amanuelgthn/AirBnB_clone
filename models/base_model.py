@@ -35,10 +35,6 @@ class BaseModel:
         if updated_found is False:
             self.updated_at = datetime.datetime.now()
 
-    @property
-    def get_id(self):
-        return self.id
-
     def save(self):
         self.updated_at = datetime.datetime.now()
 
@@ -55,9 +51,4 @@ class BaseModel:
         """
         __str__ method
         """
-        result = ""
-        result = "[" + type(self).__name__ + "] " + "("
-        result += self.get_id + ") "
-        dict_attr = self.__dict__
-        result += str(dict_attr)
-        return result
+        return "[{:s}] ({:s}) {}".format(self.__class__.__name__, self.id, self.__dict__)
