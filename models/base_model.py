@@ -56,8 +56,8 @@ class BaseModel:
         __str__ method
         """
         result = ""
-        result = "[" + str(type(self).__name__) + "] " + "("
-        result += str(self.get_id) + ") "
+        result = "[" + type(self).__name__ + "] " + "("
+        result += self.get_id + ") "
         dict_attr = self.__dict__
         result += str(dict_attr)
         return result
