@@ -9,7 +9,6 @@ import models
 from models.base_model import BaseModel
 
 
-
 class HBNBCommand(cmd.Cmd):
     """
     HBNBCommand class
@@ -22,8 +21,6 @@ class HBNBCommand(cmd.Cmd):
         super().__init__()
         self.prompt = "(hbnb)"
         self.classes = ["BaseModel"]
-
-        # Define the commands
         self.do_quit = self.do_quit
         self.EOF = self.do_quit
         self.help = self.help
@@ -35,12 +32,12 @@ class HBNBCommand(cmd.Cmd):
 
     def do_quit(self, *args):
         """Quit command to exit the program"""
-        return True
+        exit()
 
     def do_EOF(self, *args):
         """EOF command to exit the program"""
         print("EOF")
-        return True
+        exit()
 
     def help(self, *args):
         """Prints the help message."""
