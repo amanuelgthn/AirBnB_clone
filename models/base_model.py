@@ -31,16 +31,16 @@ class BaseModel:
         if id_found == False:
             self.id = str(uuid.uuid4())
         if created_found == False:
-            self.created_at = datetime.datetime.now()
+            self.created_at = datetime.datetime.now().isoformat()
         if updated_found == False:
-            self.updated_at = datetime.datetime.now()
+            self.updated_at = datetime.datetime.now().isoformat()
 
     @property
     def get_id(self):
         return self.id
     
     def save(self):
-        self.updated_at = datetime.datetime.now()
+        self.updated_at = datetime.datetime.now().isoformat()
         
   
     def to_dict(obj):
