@@ -40,15 +40,14 @@ class BaseModel:
 
     def to_dict(self):
         public_attr = self.__dict__.copy()
-        if "created_at" in public_attr.keys():
-            public_attr["created_at"] = public_attr["created_at"].isoformat()
-        if "updated_at" in public_attr.keys():
-            public_attr["updated_at"] = public_attr["updated_at"].isoformat()
-        public_attr["__class__"] = str(type(self).__name__)
+        public_attr["created_at"] = public_attr["created_at"].isoformat()
+        public_attr["updated_at"] = public_attr["updated_at"].isoformat()
+        public_attr["__class__"] = __class__.__name__
         return public_attr
 
     def __str__(self):
         """
         __str__ method
         """
-        return "[{:s}] ({:s}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        return "[{:s}] ({:s}) {}".format(self.__class__.__name__,
+                                         self.id, self.__dict__)
