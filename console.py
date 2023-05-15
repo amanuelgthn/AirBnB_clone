@@ -6,6 +6,7 @@ Module that dontains the entry point of the command interpreter
 
 import cmd
 import models
+import io
 from models.base_model import BaseModel
 
 
