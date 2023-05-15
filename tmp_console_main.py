@@ -13,8 +13,22 @@ class HBNBCommand(cmd.Cmd):
     """
     HBNBCommand class
     """
-    prompt = "(hbnb)"
-    classes = ["BaseModel"]
+
+    def __init__(self):
+        """
+        initialiazation
+        """
+        super().__init__()
+        self.prompt = "(hbnb)"
+        self.classes = ["BaseModel"]
+        self.do_quit = self.do_quit
+        self.EOF = self.do_quit
+        self.help = self.help
+        self.do_create = self.do_create
+        self.do_show = self.do_show
+        self.do_all = self.do_all
+        self.do_destroy = self.do_destroy
+        self.do_update = self.do_update
 
     def do_quit(self, *args):
         """Quit command to exit the program"""
