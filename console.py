@@ -20,7 +20,7 @@ class HBNBCommand(cmd.Cmd):
         """
         super().__init__()
         self.prompt = "(hbnb)"
-        self.classes = ["BaseModel"]
+        self.classes = ["BaseModel", "User"]
         self.do_quit = self.do_quit
         self.EOF = self.do_quit
         self.help = self.help
