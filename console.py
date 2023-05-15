@@ -6,6 +6,7 @@ Module that dontains the entry point of the command interpreter
 
 import cmd
 import models
+import io
 from models.base_model import BaseModel
 
 
@@ -19,6 +20,7 @@ class HBNBCommand(cmd.Cmd):
         initialiazation
         """
         super().__init__()
+        stdout = io.StringIO()
         self.prompt = "(hbnb)"
         self.classes = ["BaseModel"]
         self.do_quit = self.do_quit
