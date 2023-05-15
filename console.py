@@ -6,7 +6,6 @@ Module that dontains the entry point of the command interpreter
 
 import cmd
 import models
-import io
 from models.base_model import BaseModel
 
 
@@ -14,8 +13,22 @@ class HBNBCommand(cmd.Cmd):
     """
     HBNBCommand class
     """
-    prompt = "(hbnb)"
-    classes = ["BaseModel"]
+
+    def __init__(self, **kwargs):
+        """
+        initialiazation
+        """
+        super().__init__()
+        self.prompt = "(hbnb)"
+        self.classes = ["BaseModel"]
+        self.do_quit = self.do_quit
+        self.EOF = self.do_quit
+        self.help = self.help
+        self.do_create = self.do_create
+        self.do_show = self.do_show
+        self.do_all = self.do_all
+        self.do_destroy = self.do_destroy
+        self.do_update = self.do_update
 
     def do_quit(self, *args):
         """Quit command to exit the program"""
@@ -140,5 +153,3 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
 
 
-if __name__ == '__main__':
-    HBNBCommand().cmdloop()
