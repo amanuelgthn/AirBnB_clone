@@ -20,5 +20,5 @@ class City(BaseModel):
         Initialization
         """
         super().__init__(self, *args, **kwargs)
-        #self.state_id = State.id
+
 

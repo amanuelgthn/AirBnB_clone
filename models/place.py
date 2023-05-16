@@ -30,7 +30,5 @@ class Place(BaseModel):
         Initialization
         """
         super().__init__(self, *args, **kwargs)
-        self.city_id = City.id
-        self.user_id = User.id
-        self.amenity_ids.append(Amenity.id)
+
 

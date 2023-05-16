@@ -21,5 +21,3 @@ class City(BaseModel):
         Initialization
         """
         super().__init__(self, *args, **kwargs)
-        self.place_id = Place.id
-        self.user_id = User.id
