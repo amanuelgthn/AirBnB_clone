@@ -7,7 +7,7 @@ from models.place import Place
 from models.user import User
 
 
-class City(BaseModel):
+class Review(BaseModel):
     """
     Review Class
     """
