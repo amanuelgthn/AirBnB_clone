@@ -29,10 +29,11 @@ class FileStorage():
                 "Place": Place,
                 "City": City,
                 "Review": Review,
-                "State":State}
+                "State": State}
 
     def all(self):
         return self.__objects
+
     def new(self, obj):
         if obj:
             name = "{}.{}".format(obj.__class__.__name__, obj.id)
@@ -42,15 +43,20 @@ class FileStorage():
         file_dict = {}
         for key in self.__objects.keys():
             file_dict[key] = self.__objects[key].to_dict()
-        with open(self.__file_path,"w+", encoding="utf-8") as file:
-            json.dump(file_dict,file)
+        with open(self.__file_path, "w+", encoding="utf-8") as file:
+            json.dump(file_dict, file)
+
     def reload(self):
         """Deserialize/convert obj dicts back to instances, if it exists"""
         if os.path.exists(self.__file_path):
             with open(self.__file_path, 'r', encoding="UTF-8") as file:
-               objects= json.load(file)
+                objects = json.load(file)
             for key, value in objects.items():
                 obj = self.dict_ref[value['__class__']](**value)
                 self.__objects[key] = obj
+
     def remove(self, key):
+        """
+        method to remove key
+        """
         self.__objects.pop(key)
