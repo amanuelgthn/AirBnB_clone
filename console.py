@@ -36,7 +36,6 @@ class HBNBCommand(cmd.Cmd):
         self.do_all = self.do_all
         self.do_destroy = self.do_destroy
         self.do_update = self.do_update
-        self.magic = self.magic
 
     def do_quit(self, *args):
         """Quit command to exit the program"""
