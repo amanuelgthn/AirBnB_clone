@@ -9,7 +9,10 @@ import models
 from models.base_model import BaseModel
 from models.user import User
 from models.amenity import Amenity
-
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
 class HBNBCommand(cmd.Cmd):
     """
     HBNBCommand class
@@ -21,7 +24,7 @@ class HBNBCommand(cmd.Cmd):
         """
         super().__init__()
         self.prompt = "(hbnb)"
-        self.classes = ["BaseModel", "User", "Amenity"]
+        self.classes = ["BaseModel", "User", "Amenity", "City", "Place", "Review", "State"]
         self.do_quit = self.do_quit
         self.EOF = self.do_quit
         self.help = self.help
