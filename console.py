@@ -49,33 +49,31 @@ class HBNBCommand(cmd.Cmd):
         """Do nothing on an empty line."""
         return
 
-    def do_create(self, args):
+    def do_create(self, *args):
         """
         Creates a new instance of BaseModel, saves it (to the JSON)
         and prints the id
         """
+        arguments = str(args[0]).split(" ")
         if len(args) == 0:
             print("** class name missing **")
-            return
-        arguments = str(args[0]).split()
-        if arguments[0] not in self.classes:
+        elif arguments[0] not in self.classes:
             print("** class doesn't exist **")
             return
-        else:
-            try:
-                new_obj = arguments[1]
-                models.storage.new(new_obj)
-                models.storage.save()
-                print(new_obj.id)
-            except NameError:
-                print("** class doesn't exist **")
+        try:
+            key =eval(arguments[0])()
+            models.storage.new(key)
+            models.storage.save()
+            print(key.id)
+        except NameError:
+            print("** class doesn't exist **")
 
     def do_show(self, *args):
         """
         print the string representation of an instance
         based on the class name and id
         """
-        arguments = str(args[0]).split()
+        arguments = str(args[0]).split(" ")
         if len(args) == 0:
             print("** class name missing **")
         elif arguments[0] not in self.classes:
