@@ -13,6 +13,8 @@ from models.city import City
 from models.place import Place
 from models.review import Review
 from models.state import State
+
+
 class HBNBCommand(cmd.Cmd):
     """
     HBNBCommand class
@@ -24,7 +26,8 @@ class HBNBCommand(cmd.Cmd):
         """
         super().__init__()
         self.prompt = "(hbnb)"
-        self.classes = ["BaseModel", "User", "Amenity", "City", "Place", "Review", "State"]
+        self.classes = ["BaseModel", "User", "Amenity",
+                        "City", "Place", "Review", "State"]
         self.do_quit = self.do_quit
         self.EOF = self.do_quit
         self.help = self.help
@@ -33,6 +36,7 @@ class HBNBCommand(cmd.Cmd):
         self.do_all = self.do_all
         self.do_destroy = self.do_destroy
         self.do_update = self.do_update
+        self.magic = self.magic
 
     def do_quit(self, *args):
         """Quit command to exit the program"""
@@ -66,7 +70,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         try:
-            key =eval(arguments[0])()
+            key = eval(arguments[0])()
             models.storage.new(key)
             models.storage.save()
             print(key.id)
@@ -163,6 +167,7 @@ class HBNBCommand(cmd.Cmd):
             models.storage.save()
         except KeyError:
             print("** no instance found **")
-    
+
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
