@@ -75,8 +75,9 @@ class HBNBCommand(cmd.Cmd):
         based on the class name and id
         """
         arguments = str(args[0]).split(" ")
-        if len(args) == 0:
+        if arguments[0] == "":
             print("** class name missing **")
+            return
         elif arguments[0] not in self.classes:
             print("** class doesn't exist **")
             return
@@ -95,19 +96,20 @@ class HBNBCommand(cmd.Cmd):
         print all string representation of all instances based or
         not on the class name
         """
+        arguments = str(args[0]).split(" ")
+        if arguments[0] not in self.classes and len(arguments[0]) > 0:
+            print("** class doesn't exist **")
+            return
         objects = models.storage.all()
-        arguments = str(args[0]).split()
         list_obj = []
-        if len(args) == 0:
+        if len(arguments[0]) == 0:
             for key, value in objects.items():
                 list_obj.append(value.__str__())
-        elif arguments:
-            if arguments[0] not in self.classes:
-                print("** class doesn't exist **")
-                return
+        else:
             for key, value in objects.items():
                 if type(value) is arguments[0]:
                     list_obj.append(value.__str__())
+        print(list_obj)
 
     def do_update(self, *args):
         """
@@ -140,9 +142,10 @@ class HBNBCommand(cmd.Cmd):
         """
         destroy
         """
-        arguments = str(args[0]).split()
-        if len(args) == 0:
+        arguments = str(args[0]).split(" ")
+        if arguments[0] == "":
             print("** class name missing **")
+            return
         elif arguments[0] not in self.classes:
             print("** class doesn't exist **")
             return
