@@ -107,7 +107,7 @@ class HBNBCommand(cmd.Cmd):
                 list_obj.append(value.__str__())
         else:
             for key, value in objects.items():
-                if type(value) is arguments[0]:
+                if value.__class__.__name__ == arguments[0]:
                     list_obj.append(value.__str__())
         print(list_obj)
 
