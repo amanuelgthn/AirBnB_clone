@@ -7,7 +7,8 @@ Module that dontains the entry point of the command interpreter
 import cmd
 import models
 from models.base_model import BaseModel
-
+from models.user import User
+from models.amenity import Amenity
 
 class HBNBCommand(cmd.Cmd):
     """
@@ -20,7 +21,7 @@ class HBNBCommand(cmd.Cmd):
         """
         super().__init__()
         self.prompt = "(hbnb)"
-        self.classes = ["BaseModel"]
+        self.classes = ["BaseModel", "User", "Amenity"]
         self.do_quit = self.do_quit
         self.EOF = self.do_quit
         self.help = self.help
