@@ -54,11 +54,16 @@ class HBNBCommand(cmd.Cmd):
         Creates a new instance of BaseModel, saves it (to the JSON)
         and prints the id
         """
-        if len(args) == 1:
+        if len(args) == 0:
             print("** class name missing **")
+            return
+        arguments = str(args[0]).split()
+        if arguments[0] not in self.classes:
+            print("** class doesn't exist **")
+            return
         else:
             try:
-                new_obj = eval(args)()
+                new_obj = arguments[1]
                 models.storage.new(new_obj)
                 models.storage.save()
                 print(new_obj.id)
