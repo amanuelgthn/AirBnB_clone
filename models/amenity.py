@@ -10,9 +10,9 @@ class Amenity(BaseModel):
     """
     Amenity Class
     """
-    
+
     name = ""
-    
+
     def __init__(self, *args, **kwargs):
         """
         Initialization

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-__init__ module 
+__init__ module
 """
 import json
 import uuid

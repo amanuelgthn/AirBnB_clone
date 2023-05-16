@@ -10,8 +10,9 @@ class State(BaseModel):
     """
     State Class
     """
-    
-    name = "" 
+
+    name = ""
+
     def __init__(self, *args, **kwargs):
         """
         Initialization

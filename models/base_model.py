@@ -5,7 +5,7 @@ Module that defines all the common attributes/methods for other classes
 
 
 import uuid
-import datetime
+from datetime import datetime
 import models
 
 
@@ -21,20 +21,20 @@ class BaseModel:
                 if key == "id":
                     self.id = value
                 elif key == "created_at":
-                    self.created_at = datetime.datetime.strptime(value, time_format)
+                    self.created_at = datetime.strptime(value, time_format)
                 elif key == "updated_at":
-                    self.updated_at = datetime.datetime.strptime(value, time_format)
+                    self.updated_at = datetime.strptime(value, time_format)
                 else:
-                   if key != "__class__":
-                       setattr(self, key, value)
+                    if key != "__class__":
+                        setattr(self, key, value)
         else:
             self.id = str(uuid.uuid4())
-            self.created_at = datetime.datetime.now()
-            self.updated_at = datetime.datetime.now()
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
             models.storage.new(self)
 
     def save(self):
-        self.updated_at = datetime.datetime.now()
+        self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
@@ -50,5 +50,6 @@ class BaseModel:
         """
         return "[{:s}] ({:s}) {}".format(self.__class__.__name__,
                                          self.id, self.__dict__)
+
     def __repr__(self):
         return (self.__str__)

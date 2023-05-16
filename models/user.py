@@ -10,12 +10,12 @@ class User(BaseModel):
     """
     User Class
     """
-    
+
     email = ""
     password = ""
     first_name = ""
     last_name = ""
-    
+
     def __init__(self, *args, **kwargs):
         """
         Initialization

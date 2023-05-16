@@ -8,6 +8,7 @@ from models.city import City
 from models.user import User
 from models.amenity import Amenity
 
+
 class Place(BaseModel):
     """
     Place Class
@@ -24,11 +25,9 @@ class Place(BaseModel):
     latitude = 0.0
     longitude = 0.0
     amenity_ids = []
-    
+
     def __init__(self, *args, **kwargs):
         """
         Initialization
         """
         super().__init__(self, *args, **kwargs)
-
-
