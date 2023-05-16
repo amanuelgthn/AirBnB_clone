@@ -115,9 +115,10 @@ class HBNBCommand(cmd.Cmd):
         """
         update
         """
-        arguments = str(args[0]).split()
-        if len(args) == 0:
+        arguments = str(args[0]).split(" ")
+        if arguments[0] == "":
             print("** class name missing **")
+            return
         elif arguments[0] not in self.classes:
             print("** class doesn't exist **")
             return
