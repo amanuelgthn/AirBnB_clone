@@ -1,25 +1,25 @@
 #!/usr/bin/python3
 """
-Module to test amenity module
+Module to test State module
 """
 
 import unittest
 from models import storage
 from models.base_model import BaseModel
-from models.amenity import Amenity
+from models.state import State
 
 
-class Amenity_testcase(unittest.TestCase):
+class State_testcase(unittest.TestCase):
     """
-    test case for User
+    test case for State
     """
     def test_public_attributes(self):
         """
         test for public class attributes
         """
-        model = Amenity()
-        model.name = "Pools"
-        self.assertEqual(model.name, "Pools")
+        model = State()
+        model.name = "California"
+        self.assertEqual(model.name, "California")
 
 if __name__ == "__main__":
     unittest.main()
