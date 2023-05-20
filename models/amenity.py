@@ -3,6 +3,7 @@
 Module that contains Amenity Class that inherits from BaseModel
 """
 
+
 from models.base_model import BaseModel
 
 
