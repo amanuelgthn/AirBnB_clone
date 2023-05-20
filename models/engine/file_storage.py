@@ -60,6 +60,7 @@ class FileStorage():
         method to remove key
         """
         self.__objects.pop(key)
+
     @property
     def file_path(self):
         return self.__file_path

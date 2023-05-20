@@ -14,9 +14,9 @@ class FileStorage_testcase(unittest.TestCase):
     test case for FileStorage
     """
     def test_file_path(self):
-        my_model = BaseModel()
+        my_model = FileStorage()
         my_model.save()
-        self.assertEqual(my_model., "file.json")
+        self.assertEqual(my_model.file_path, "file.json")
 
 if __name__ == "__main__":
     unittest.main()
