@@ -17,9 +17,11 @@ class FileStorage_testcase(unittest.TestCase):
     test case for FileStorage
     """
     
+    def setUp(self):
+        self.storage = FileStorage()
     def test_all(self):
         model = FileStorage()
-        self.assertEqual(model.all(),{})
+        self.assertEqual(self.storage.all(),{})
 
 
 if __name__ == "__main__":
