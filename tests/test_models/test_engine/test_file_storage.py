@@ -19,9 +19,8 @@ class FileStorage_testcase(unittest.TestCase):
     
     
     def test_all(self):
-        model = User()
-        model.storage = FileStorage().all()
-        self.assertIsNotNone(model.storage)
+        model= FileStorage()
+        self.assertTrue(model.all() == {})
 
 
 if __name__ == "__main__":
