@@ -29,6 +29,7 @@ class User_testcase(unittest.TestCase):
         my_user2.last_name = "Phalange"
         my_user2.password = "root2"
         my_user2.save()
+        self.assertTrue(hasattr(my_user, "first_name"))
         self.assertEqual(my_user.first_name, "Betty")
         self.assertEqual(my_user.last_name, "Bar")
         self.assertEqual(my_user.email, "airbnb@mail.com")
