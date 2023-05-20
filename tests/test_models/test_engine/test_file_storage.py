@@ -34,11 +34,11 @@ class FileStorage_testcase(unittest.TestCase):
             objects = json.load(file)
         self.assertEqual(objects["User.{}".format(user.id)], user.to_dict())
     def test_reload(self):
-        user = User()
+        user = BaseModel()
         self.storage.new(user)
         self.storage.save()
         self.storage.reload()
-        self.assertIn("User.{}".format(user.id), self.storage.all())
+        self.assertIn("BaseModel.{}".format(user.id), self.storage.all())
        
 
 
