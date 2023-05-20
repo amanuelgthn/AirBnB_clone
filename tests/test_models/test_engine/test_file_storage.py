@@ -20,8 +20,12 @@ class FileStorage_testcase(unittest.TestCase):
     def setUp(self):
         self.storage = FileStorage()
     def test_all(self):
-        model = FileStorage()
         self.assertEqual(self.storage.all(),{})
+    def test_new(self):
+        user = BaseModel()
+        self.storage.new(user)
+        self.assertIn("BaseModel.{}".format(user.id), self.storage.all())
+
 
 
 if __name__ == "__main__":
