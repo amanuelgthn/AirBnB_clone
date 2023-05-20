@@ -13,6 +13,7 @@ class User_testcase(unittest.TestCase):
     """
     test case for User
     """
+
     def test_first_name(self):
         """
         test for first_name
@@ -38,6 +39,6 @@ class User_testcase(unittest.TestCase):
         self.assertEqual(my_user2.email, "airbnb2@mail.com")
         self.assertEqual(my_user2.password, "root2")
 
+
 if __name__ == "__main__":
     unittest.main()
-    

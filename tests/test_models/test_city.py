@@ -23,5 +23,6 @@ class City_testcase(unittest.TestCase):
         self.assertEqual(model.name, "")
         self.assertEqual(model.state_id, "")
 
+
 if __name__ == "__main__":
     unittest.main()

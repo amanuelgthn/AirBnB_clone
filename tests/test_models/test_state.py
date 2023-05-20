@@ -3,6 +3,7 @@
 Module to test State module
 """
 
+
 import unittest
 from models import storage
 from models.base_model import BaseModel
@@ -20,6 +21,7 @@ class State_testcase(unittest.TestCase):
         model = State()
         self.assertTrue(hasattr(model, "name"))
         self.assertEqual(model.name, "")
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -3,11 +3,11 @@
 Module to test review module
 """
 
+
 import unittest
 from models import storage
 from models.base_model import BaseModel
 from models.review import Review
-
 
 
 class Review_testcase(unittest.TestCase):
@@ -25,6 +25,7 @@ class Review_testcase(unittest.TestCase):
         self.assertEqual(model.place_id, "")
         self.assertEqual(model.user_id, "")
         self.assertEqual(model.text, "")
+
 
 if __name__ == "__main__":
     unittest.main()
