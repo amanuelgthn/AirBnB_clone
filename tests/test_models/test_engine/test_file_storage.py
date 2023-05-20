@@ -19,7 +19,7 @@ class FileStorage_testcase(unittest.TestCase):
     
     def test_all(self):
         model = FileStorage()
-        assert model.all() == {}
+        self.assertEqual(model.all(),{})
 
 
 if __name__ == "__main__":
