@@ -33,13 +33,13 @@ class Place_testcase(unittest.TestCase):
         self.assertEqual(model.city_id, "12")
         self.assertEqual(model.user_id, "14")
         self.assertEqual(model.description, "New")
-        self.assertEqual(model.number_rooms, "2")
-        self.assertEqual(model.number_bathrooms, "1")
+        self.assertEqual(model.number_rooms, 2)
+        self.assertEqual(model.number_bathrooms, 1)
         self.assertEqual(model.max_guest, 2)
         self.assertEqual(model.price_by_night, 100)
         self.assertEqual(model.latitude, 4.5 )
         self.assertEqual(model.longitude, 5.8)
-        self.assertIn(model.amenity_ids, 5)
+        self.assertIn(5,model.amenity_ids)
 
 if __name__ == "__main__":
     unittest.main()

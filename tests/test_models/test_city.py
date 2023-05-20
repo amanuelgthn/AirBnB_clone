@@ -20,7 +20,7 @@ class City_testcase(unittest.TestCase):
         model = City()
         model.name = "LA City"
         model.state_id = "12"
-        self.assertEqual(model.name, "California")
+        self.assertEqual(model.name, "LA City")
         self.assertEqual(model.state_id, "12")
 
 if __name__ == "__main__":
