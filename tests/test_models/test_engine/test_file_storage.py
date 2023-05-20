@@ -33,6 +33,13 @@ class FileStorage_testcase(unittest.TestCase):
         with open(self.storage.file_path, 'r', encoding="UTF-8") as file:
             objects = json.load(file)
         self.assertEqual(objects["User.{}".format(user.id)], user.to_dict())
+    def test_reload(self):
+        user = User()
+        self.storage.new(user)
+        self.storage.save()
+        self.storage.reload()
+        self.assertIn("User.{}".format(user.id), self.storage.all())
+       
 
 
 if __name__ == "__main__":
