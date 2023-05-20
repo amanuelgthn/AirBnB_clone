@@ -13,7 +13,7 @@ class User_testcase(unittest.TestCase):
     """
     test case for User
     """
-    def test_public_attributes(self):
+    def test_first_name(self):
         """
         test for public class attributes
         """
