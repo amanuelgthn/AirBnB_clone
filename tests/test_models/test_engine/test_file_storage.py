@@ -20,8 +20,8 @@ class FileStorage_testcase(unittest.TestCase):
     
     def test_all(self):
         model = User()
-        model.storage = FileStorage()
-        self.assertIsNotNone(model.storage.all())
+        model.storage = FileStorage().all()
+        self.assertIsNotNone(model.storage)
 
 
 if __name__ == "__main__":
