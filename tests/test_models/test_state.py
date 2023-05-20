@@ -18,8 +18,8 @@ class State_testcase(unittest.TestCase):
         test for public class attributes
         """
         model = State()
-        model.name = "California"
-        self.assertEqual(model.name, "California")
+        self.assertTrue(hasattr(model, "name"))
+        self.assertEqual(model.name, "")
 
 if __name__ == "__main__":
     unittest.main()
