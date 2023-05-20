@@ -28,12 +28,12 @@ class FileStorage_testcase(unittest.TestCase):
         self.storage.new(user)
         self.assertIn("BaseModel.{}".format(user.id), self.storage.all())
     def test_save(self):
-        user = User()
+        user = BaseModel()
         self.storage.new(user)
         self.storage.save()
         with open(self.storage.file_path, 'r', encoding="UTF-8") as file:
             objects = json.load(file)
-        self.assertEqual(objects["User.{}".format(user.id)], user.to_dict())
+        self.assertEqual(objects["BaseModel.{}".format(user.id)], user.to_dict())
     def test_reload(self):
         user = City()
         self.storage.new(user)
