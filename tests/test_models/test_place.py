@@ -9,7 +9,7 @@ from models.base_model import BaseModel
 from models.place import Place
 
 
-class City_testcase(unittest.TestCase):
+class Place_testcase(unittest.TestCase):
     """
     test case for State
     """
