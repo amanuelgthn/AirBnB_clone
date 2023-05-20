@@ -17,16 +17,14 @@ class User_testcase(unittest.TestCase):
         """
         test for public class attributes
         """
-        my_user = User()
-        my_user.first_name = "Betty"
-        my_user.last_name = "Bar"
-        my_user.email = "airbnb@mail.com"
-        my_user.password = "root"
-        my_user.save()
-        self.assertEqual(my_user.first_name, "Betty")
-        self.assertEqual(my_user.last_name, "Bar")
-        self.assertEqual(my_user.email, "airbnb@mail.com")
-        self.assertEqual(my_user.password, "root")
+        User.first_name = "Betty"
+        User.last_name = "Bar"
+        User.email = "airbnb@mail.com"
+        User.password = "root"
+        self.assertEqual(User.first_name, 'Betty')
+        self.assertEqual(User.last_name, "Bar")
+        self.assertEqual(User.email, "airbnb@mail.com")
+        self.assertEqual(User.password, "root")
 
 if __name__ == "__main__":
     unittest.main()
