@@ -16,7 +16,7 @@ class FileStorage_testcase(unittest.TestCase):
     def test_file_path(self):
         my_model = BaseModel()
         my_model.save()
-        self.assertEqual(my_model.__file_path, "file.json")
+        self.assertEqual(my_model., "file.json")
 
 if __name__ == "__main__":
     unittest.main()
