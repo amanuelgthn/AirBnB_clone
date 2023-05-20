@@ -5,6 +5,7 @@ Module to test file_storage.py module
 
 
 import unittest
+import json
 from datetime import datetime
 from models import storage
 from models.engine.file_storage import FileStorage
@@ -25,7 +26,13 @@ class FileStorage_testcase(unittest.TestCase):
         user = BaseModel()
         self.storage.new(user)
         self.assertIn("BaseModel.{}".format(user.id), self.storage.all())
-
+    def test_save(self):
+        user = User()
+        self.storage.new(user)
+        self.storage.save()
+        with open(self.storage.file_path, 'r', encoding="UTF-8") as file:
+            objects = json.load(file)
+        self.assertEqual(objects["User.{}".format(user.id)], user.to_dict())
 
 
 if __name__ == "__main__":
