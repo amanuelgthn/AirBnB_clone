@@ -12,11 +12,12 @@ from models.base_model import BaseModel
 
 
 class BaseModel_TestCase(unittest.TestCase):
+    def setUp(self):
+        self.my_model = BaseModel()
     def test_save(self):
-        my_model = BaseModel()
-        self.assertEqual(my_model.created_at,  my_model.updated_at)
-        my_model.save()
-        self.assertGreater(my_model.updated_at, my_model.created_at)
+        self.assertEqual(self.my_model.created_at,  self.my_model.updated_at)
+        self.my_model.save()
+        self.assertGreater(self.my_model.updated_at, self.my_model.created_at)
 
     def test_init(self):
         """
