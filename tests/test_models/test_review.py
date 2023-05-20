@@ -19,12 +19,12 @@ class Review_testcase(unittest.TestCase):
         test for public class attributes
         """
         model = Review()
-        model.place_id = "5555"
-        model.user_id = "4444"
-        model.text = "Great"
-        self.assertEqual(model.place_id, "5555")
-        self.assertEqual(model.user_id, "4444")
-        self.assertEqual(model.text, "Great")
+        self.assertTrue(hasattr(model, "place_id"))
+        self.assertTrue(hasattr(model, "user_id"))
+        self.assertTrue(hasattr(model, "text"))
+        self.assertEqual(model.place_id, "")
+        self.assertEqual(model.user_id, "")
+        self.assertEqual(model.text, "")
 
 if __name__ == "__main__":
     unittest.main()

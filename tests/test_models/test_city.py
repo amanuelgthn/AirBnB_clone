@@ -18,10 +18,10 @@ class City_testcase(unittest.TestCase):
         test for public class attributes
         """
         model = City()
-        model.name = "LA City"
-        model.state_id = "12"
-        self.assertEqual(model.name, "LA City")
-        self.assertEqual(model.state_id, "12")
+        self.assertTrue(hasattr(model, "name"))
+        self.assertTrue(hasattr(model, "state_id"))
+        self.assertEqual(model.name, "")
+        self.assertEqual(model.state_id, "")
 
 if __name__ == "__main__":
     unittest.main()

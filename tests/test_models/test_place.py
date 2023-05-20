@@ -18,28 +18,28 @@ class Place_testcase(unittest.TestCase):
         test for public class attributes
         """
         model = Place()
-        model.name = "Suburbs"
-        model.city_id = "12"
-        model.user_id = "14"
-        model.description = "New"
-        model.number_rooms = 2
-        model.number_bathrooms = 1
-        model.max_guest = 2
-        model.price_by_night = 100
-        model.latitude = 4.5
-        model.longitude = 5.8
-        model.amenity_ids = [5,4]
-        self.assertEqual(model.name, "Suburbs")
-        self.assertEqual(model.city_id, "12")
-        self.assertEqual(model.user_id, "14")
-        self.assertEqual(model.description, "New")
-        self.assertEqual(model.number_rooms, 2)
-        self.assertEqual(model.number_bathrooms, 1)
-        self.assertEqual(model.max_guest, 2)
-        self.assertEqual(model.price_by_night, 100)
-        self.assertEqual(model.latitude, 4.5 )
-        self.assertEqual(model.longitude, 5.8)
-        self.assertIn(5,model.amenity_ids)
+        self.assertTrue(hasattr(model, "name"))
+        self.assertTrue(hasattr(model, "city_id"))
+        self.assertTrue(hasattr(model, "user_id"))
+        self.assertTrue(hasattr(model, "description"))
+        self.assertTrue(hasattr(model, "number_rooms"))
+        self.assertTrue(hasattr(model, "number_bathrooms"))
+        self.assertTrue(hasattr(model, "max_guest"))
+        self.assertTrue(hasattr(model, "price_by_night"))
+        self.assertTrue(hasattr(model, "latitude"))
+        self.assertTrue(hasattr(model, "longitude"))
+        self.assertTrue(hasattr(model, "amenity_ids"))             
+        self.assertEqual(model.name, "")
+        self.assertEqual(model.city_id, "")
+        self.assertEqual(model.user_id, "")
+        self.assertEqual(model.description, "")
+        self.assertEqual(model.number_rooms, 0)
+        self.assertEqual(model.number_bathrooms, 0)
+        self.assertEqual(model.max_guest, 0)
+        self.assertEqual(model.price_by_night, 0)
+        self.assertEqual(model.latitude, 0.0)
+        self.assertEqual(model.longitude, 0.0)
+        self.assertEqual(model.amenity_ids, [])
 
 if __name__ == "__main__":
     unittest.main()
