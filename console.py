@@ -36,6 +36,7 @@ class HBNBCommand(cmd.Cmd):
         self.do_all = self.do_all
         self.do_destroy = self.do_destroy
         self.do_update = self.do_update
+        self.do_count = self.do_count
 
     def do_quit(self, *args):
         """Quit command to exit the program"""
@@ -166,7 +167,32 @@ class HBNBCommand(cmd.Cmd):
             models.storage.save()
         except KeyError:
             print("** no instance found **")
-
+    def do_count(self, *args):
+        """
+        count
+        """
+        count = 0
+        arguments = str(args[0]).split(" ")
+        if arguments[0] == "":
+            print("** class name missing **")
+            return
+        elif arguments[0] not in self.classes:
+            print("** class doesn't exist **")
+            return
+        objects = models.storage.all()
+        for key, value in objects.items():
+            if value.__class__.__name__ == arguments[0]:
+                count +=1
+        print(count)
+    def default(self, *args):
+        """
+        when the command line prefix id not recognized
+        """
+        arguments = str(args[0]).split(".")
+        argument = str(arguments[1]).split("(")
+        command = ""
+        command = arguments[0] + " " + argument[0]
+        eval('self.do_' + argument[0] + '(arguments[0])')
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
