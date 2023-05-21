@@ -168,6 +168,7 @@ class HBNBCommand(cmd.Cmd):
             models.storage.save()
         except KeyError:
             print("** no instance found **")
+
     def do_count(self, *args):
         """
         count
@@ -183,8 +184,9 @@ class HBNBCommand(cmd.Cmd):
         objects = models.storage.all()
         for key, value in objects.items():
             if value.__class__.__name__ == arguments[0]:
-                count +=1
+                count += 1
         print(count)
+
     def default(self, *args):
         """
         when the command line prefix id not recognized
@@ -195,12 +197,33 @@ class HBNBCommand(cmd.Cmd):
         id = ""
         pass_arg = ""
         command = arguments[0] + " " + argument[0]
-        if argument[0] in ['show','destroy']:
+        if argument[0] in ['show', 'destroy']:
             id = str(re.findall(r'"(.*?)"', argument[1])[0])
             pass_arg = arguments[0] + " " + id
             eval('self.do_' + argument[0] + '(pass_arg)')
+        elif argument[0] in ['update']:
+            attr_value = ""
+            args_list = re.findall(r'"(.*?)"', argument[1])
+            id = args_list[0]
+            try:
+                attr_value = args_list[2]
+            except IndexError:
+                attr_num = re.findall(r' (\d+)', argument[1])[0]
+                print(attr_num)
+            pass_arg = arguments[0] + " " + id + " " + '"'
+            if attr_value != "":
+                pass_arg += args_list[1] + '"' + " " + '"' + attr_value
+                pass_arg += '"'
+                eval('self.do_' + argument[0] + '(pass_arg)')
+            else:
+                pass_arg += args_list[1] + '"' + " "
+                print(pass_arg)
+                eval("self.do_" + argument[0] + "(pass_arg)" +
+                     "(" + str(attr_num) + ")", globals(), locals())
+
         else:
             eval('self.do_' + argument[0] + '(arguments[0])')
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
