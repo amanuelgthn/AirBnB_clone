@@ -6,6 +6,7 @@ Module that dontains the entry point of the command interpreter
 
 import cmd
 import models
+import re
 from models.base_model import BaseModel
 from models.user import User
 from models.amenity import Amenity
@@ -191,8 +192,15 @@ class HBNBCommand(cmd.Cmd):
         arguments = str(args[0]).split(".")
         argument = str(arguments[1]).split("(")
         command = ""
+        id = ""
+        pass_arg = ""
         command = arguments[0] + " " + argument[0]
-        eval('self.do_' + argument[0] + '(arguments[0])')
+        if argument[0] in ['show','destroy']:
+            id = str(re.findall(r'"(.*?)"', argument[1])[0])
+            pass_arg = arguments[0] + " " + id
+            eval('self.do_' + argument[0] + '(pass_arg)')
+        else:
+            eval('self.do_' + argument[0] + '(arguments[0])')
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
