@@ -16,6 +16,7 @@ class BaseModel_TestCase(unittest.TestCase):
         self.my_model = BaseModel()
     def test_save(self):
         self.assertEqual(self.my_model.created_at,  self.my_model.updated_at)
+        self.my_model.save()
         self.assertGreater(self.my_model.updated_at, self.my_model.created_at)
 
     def test_init(self):

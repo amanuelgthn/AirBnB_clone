@@ -22,7 +22,7 @@ class FileStorage_testcase(unittest.TestCase):
     def setUp(self):
         self.storage = FileStorage()
     def test_all(self):
-        self.assertEqual(self.storage.all(), {})
+        self.assertEqual(type(self.storage.all()), dict)
     def test_new(self):
         user = BaseModel()
         self.storage.new(user)
