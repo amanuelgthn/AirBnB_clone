@@ -34,16 +34,40 @@
     width: 25%;
     left: 25%;
     line-height: 100%;
-}
-.filters h3 {
-    position: absolute;
-    font-weight: 600;
-    top: 0px;
-    left: 50px;
+
 }
 .filters h4 {
     position: absolute;
     font-weight: 400;
     font-size: 14px;
-    top:  22px;
-    left: 50px;
+    top:  20px;
+    left: 30px;
+}
+.filters ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-indent: 20px;
+}
+.filters li {
+    padding-bottom: 10px;
+    text-indent: 40px;
+    padding-right: 40px;
+}
+.locations:hover .popover {
+    display: table-cell;
+}
+.amenities:hover .popover {
+    display: table-cell;
+}
+.popover {
+    margin-top: 6px;
+    display:none;
+    position: absolute;
+    background: #FAFAFA;
+    color: black;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+}
