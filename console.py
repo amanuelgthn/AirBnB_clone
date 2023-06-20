@@ -150,7 +150,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, *args):
         """
-        destroy
+        destroy Objects from storage
         """
         arguments = str(args[0]).split(" ")
         if arguments[0] == "":
